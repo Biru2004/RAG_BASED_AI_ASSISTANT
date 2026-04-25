@@ -4,5 +4,5 @@ scikit-learn
 numpy
 joblib
 openai
-duckduckgo_search
+duckduckgo_search>=8.1.1
 streamlit-mic-recorder

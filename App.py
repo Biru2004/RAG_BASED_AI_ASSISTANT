@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np 
 import joblib 
 from openai import OpenAI
-from ddgs import DDGS
+from duckduckgo_search import DDGS
 from streamlit_mic_recorder import mic_recorder
 import io
 
@@ -23,13 +23,14 @@ ALL_VIDEO_DETAILS = {
     5:"https://youtu.be/1BsVhumGlNc?si=O-ySMQcUd8-wXtGq"
 }
 
-# API KEY (Cloud/Local)
-try:
+if "OPENAI_API_KEY" in st.secrets:
     api_key = st.secrets["OPENAI_API_KEY"]
-except:
-    api_key = "sk-proj-TUMHARI_ASLI_KEY_YAHAN_DAAL" 
+else:
+    # Local testing ke liye agar bina secrets ke chala rahe ho
+    api_key = "sk-xxxxxxxx" 
 
-client = OpenAI(api_key="A")
+# YAHAN DHYAN DEIN: "A" ki jagah api_key variable pass karein
+client = OpenAI(api_key=api_key)
 
 # ---------------------------------------------------------
 # 2. CORE BRAIN FUNCTIONS
